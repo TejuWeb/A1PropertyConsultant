@@ -5,127 +5,137 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <section id="about" class="section about-section">
-      <div class="container about-grid">
-        <div class="about-image stagger-item">
-          <div class="elite-image-frame">
-            <img src="/assets/hero.png" alt="Mumbai Skyline">
-            <div class="experience-badge">
-              <h2 class="text-gold">25+</h2>
-              <p>Years of Legacy</p>
+      <div class="container">
+        <div class="gallery-layout">
+          <div class="gallery-header stagger-item">
+            <div class="label-box">
+               <span class="text-accent">Elite Collection</span>
+            </div>
+            <h2 class="text-navy">Experience true luxury <br> with our signature estates</h2>
+            <p>Our hand-picked portfolio represents the pinnacle of Mumbai's architectural landscape, designed for those who seek the extraordinary.</p>
+          </div>
+          
+          <div class="image-grid stagger-item">
+            <div class="grid-column">
+              <div class="grid-item tall">
+                <img src="/assets/hero.png" alt="Luxury Penthouse">
+                <div class="hover-info">
+                   <h4>Penthouses</h4>
+                </div>
+              </div>
+            </div>
+            <div class="grid-column">
+              <div class="grid-item">
+                <img src="/assets/villa-1.png" alt="Luxury Villa">
+                <div class="hover-info">
+                   <h4>Estates</h4>
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="/assets/interior-1.png" alt="Luxury Interior">
+                <div class="hover-info">
+                   <h4>Interiors</h4>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="about-text stagger-item">
-          <h4 class="text-gold">The Agency</h4>
-          <h2 class="text-emerald">A Legacy of Trust in <br> Mumbai Real Estate</h2>
-          <p class="lead">A1 Property Consultant is the premier boutique agency for the city's most significant property transactions.</p>
-          <p>We combine deep local intelligence with a global perspective to serve a discerning clientele of investors, developers, and homeowners.</p>
-          <div class="about-features">
-            <div class="feat">
-              <h5 class="text-emerald">Bespoke Advisory</h5>
-              <p>Personalized strategies for high-value acquisitions.</p>
-            </div>
-            <div class="feat">
-              <h5 class="text-emerald">Unrivaled Access</h5>
-              <p>Direct connections to off-market premium listings.</p>
-            </div>
-          </div>
-          <a href="#contact" class="btn-elite">Connect With Us</a>
         </div>
       </div>
     </section>
   `,
   styles: [`
     .about-section {
-      background: var(--primary-alt);
+      background: var(--primary);
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 100px;
-      align-items: center;
+    .gallery-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
     }
-    .about-text h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      margin-bottom: 30px;
+    .gallery-header {
+      max-width: 800px;
+    }
+    .label-box {
+      margin-bottom: 20px;
       font-weight: 800;
-      letter-spacing: -1px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
     }
-    .lead {
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--text-main);
+    h2 {
+      font-size: 3.2rem;
       margin-bottom: 25px;
     }
-    .about-text p {
+    p {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-bottom: 25px;
+      font-size: 1.15rem;
+      line-height: 1.6;
     }
-    .elite-image-frame {
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 30px;
+      height: 700px;
+    }
+    .grid-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .grid-item {
       position: relative;
       width: 100%;
-      height: 650px;
+      height: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
     }
-    .elite-image-frame img {
+    .grid-item.tall {
+      height: 100%;
+    }
+    .grid-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      box-shadow: 0 50px 100px rgba(6, 78, 59, 0.15);
+      transition: var(--transition);
     }
-    .experience-badge {
+    .grid-item:hover img {
+      transform: scale(1.1);
+    }
+    .hover-info {
       position: absolute;
-      bottom: -40px;
-      right: -40px;
-      background: var(--secondary);
-      padding: 40px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.8));
+      opacity: 0;
+      transition: var(--transition);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+    }
+    .grid-item:hover .hover-info {
+      opacity: 1;
+    }
+    .hover-info h4 {
       color: white;
-      text-align: center;
-      min-width: 200px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    }
-    .experience-badge h2 {
-      margin-bottom: 5px;
-      font-size: 3rem;
-    }
-    .experience-badge p {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 0;
-      color: rgba(255, 255, 200, 0.8);
-    }
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0 60px;
-    }
-    .feat h5 {
-      margin-bottom: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-    }
-    .feat p {
-      font-size: 0.9rem;
+      font-size: 1.5rem;
       margin-bottom: 0;
     }
-    @media (max-width: 1200px) {
-      .about-grid {
+    @media (max-width: 768px) {
+      .image-grid {
         grid-template-columns: 1fr;
-        gap: 80px;
+        height: auto;
       }
-      .elite-image-frame {
-        height: 500px;
+      .grid-item {
+        height: 300px;
       }
-      .experience-badge {
-        right: 0;
-        bottom: -20px;
+      h2 {
+        font-size: 2.2rem;
       }
     }
   `]
 })
 export class AboutSectionComponent {}
+

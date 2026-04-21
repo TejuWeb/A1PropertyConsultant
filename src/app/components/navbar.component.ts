@@ -7,16 +7,16 @@ import { Component, HostListener, signal } from '@angular/core';
     <nav [class.scrolled]="isScrolled()">
       <div class="container nav-content">
         <div class="logo">
-          <img src="/assets/logo.png" alt="A1 Property Logo">
+          <span class="logo-text">A1<span class="text-accent">Property Consultant</span></span>
         </div>
         <ul class="nav-links">
-          <li><a href="#hero">Excellence</a></li>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#gallery">Properties</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#about">The Agency</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">About</a></li>
         </ul>
         <div class="cta">
-          <a href="#contact" class="btn-navbar">Private Inquiry</a>
+          <a href="#contact" class="btn-primary">Talk to Agent</a>
         </div>
       </div>
     </nav>
@@ -28,65 +28,40 @@ import { Component, HostListener, signal } from '@angular/core';
       left: 0;
       width: 100%;
       z-index: 1000;
-      padding: 40px 0;
+      padding: 30px 0;
       transition: var(--transition);
     }
     nav.scrolled {
-      background: var(--white);
-      padding: 20px 0;
-      box-shadow: 0 10px 40px rgba(6, 78, 59, 0.05);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      padding: 15px 0;
+      box-shadow: var(--shadow);
     }
     .nav-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .logo img {
-      height: 60px;
-      transition: var(--transition);
-    }
-    nav.scrolled .logo img {
-      height: 45px;
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--secondary);
+      letter-spacing: -1px;
     }
     .nav-links {
       display: flex;
-      gap: 50px;
+      gap: 40px;
     }
     .nav-links a {
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 600;
       color: var(--text-main);
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
       transition: var(--transition);
     }
-    .nav-links a:hover::after {
-      width: 100%;
+    .nav-links a:hover {
+      color: var(--accent);
     }
-    .btn-navbar {
-      border: 1px solid var(--secondary);
-      padding: 12px 28px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--secondary);
-    }
-    .btn-navbar:hover {
-      background: var(--secondary);
-      color: white;
-    }
-    @media (max-width: 1024px) {
+    @media (max-width: 991px) {
       .nav-links, .cta {
         display: none;
       }
@@ -101,3 +76,4 @@ export class NavbarComponent {
     this.isScrolled.set(window.scrollY > 50);
   }
 }
+

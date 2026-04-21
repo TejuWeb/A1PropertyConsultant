@@ -8,20 +8,24 @@ import { Component } from '@angular/core';
       <div class="container">
         <div class="contact-grid">
           <div class="contact-info stagger-item">
-            <h4 class="text-gold">Private Inquiries</h4>
-            <h2 class="text-emerald">Partner with Mumbai's <br> Luxury Experts</h2>
-            <p>We provide exclusive advisory for high-net-worth individuals and corporate entities seeking the city's most significant real estate assets.</p>
+            <div class="label text-accent">Private Consultation</div>
+            <h2 class="text-navy">Ready to find your <br> next masterpiece?</h2>
+            <p>Our expert agents provide personalized consultation to ensure every detail matches your elite lifestyle.</p>
             
             <div class="info-items">
               <div class="info-item">
-                <div class="info-icon">📍</div>
+                <div class="info-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
                 <div>
                   <h6>Global HQ</h6>
                   <p>Mumbai Elite Tower, BKC, Mumbai 400051</p>
                 </div>
               </div>
               <div class="info-item">
-                <div class="info-icon">📧</div>
+                <div class="info-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
                 <div>
                   <h6>Elite Desk</h6>
                   <p>concierge&#64;a1property.in</p>
@@ -30,7 +34,7 @@ import { Component } from '@angular/core';
             </div>
           </div>
           
-          <div class="contact-form-wrapper stagger-item">
+          <div class="modern-card contact-form stagger-item">
             <form (submit)="onSubmit($event)">
               <div class="form-row">
                 <div class="form-group">
@@ -38,9 +42,9 @@ import { Component } from '@angular/core';
                   <input type="text" placeholder="Johnathan Doe" required>
                 </div>
                 <div class="form-group">
-                  <label>Service Type</label>
+                  <label>Interest</label>
                   <select required>
-                    <option value="" disabled selected>Select Your Interest</option>
+                    <option value="" disabled selected>Select Category</option>
                     <option value="luxury-res">Luxury Residential</option>
                     <option value="legacy">Legacy Estates</option>
                     <option value="commercial">Commercial Portfolio</option>
@@ -53,9 +57,9 @@ import { Component } from '@angular/core';
               </div>
               <div class="form-group">
                 <label>Additional Notes</label>
-                <textarea placeholder="Tell us about your requirements..." rows="4"></textarea>
+                <textarea placeholder="Tell us about your requirements..." rows="3"></textarea>
               </div>
-              <button type="submit" class="btn-elite w-full">Initiate Consultation</button>
+              <button type="submit" class="btn-primary w-full">Initiate Consultation</button>
             </form>
           </div>
         </div>
@@ -69,18 +73,25 @@ import { Component } from '@angular/core';
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.3fr;
-      gap: 120px;
+      gap: 100px;
       align-items: center;
     }
-    .contact-info h2 {
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
+    .contact-info .label {
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+    .contact-info h2 {
+      font-size: 3.2rem;
       margin-bottom: 30px;
     }
     .contact-info p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
       margin-bottom: 50px;
+      line-height: 1.6;
     }
     .info-items {
       display: flex;
@@ -93,51 +104,50 @@ import { Component } from '@angular/core';
       align-items: center;
     }
     .info-icon {
-      font-size: 1.5rem;
-      width: 60px;
-      height: 60px;
-      background: white;
+      width: 54px;
+      height: 54px;
+      background: var(--white);
+      color: var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(6, 78, 59, 0.05);
+      box-shadow: var(--shadow);
     }
     .info-item h6 {
       font-weight: 800;
       font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
+      color: var(--secondary);
+      margin-bottom: 4px;
     }
-    .contact-form-wrapper {
-      background: white;
-      padding: 60px;
-      box-shadow: 0 40px 100px rgba(6, 78, 59, 0.1);
+    .info-item p {
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+    .contact-form {
+      padding: 50px;
     }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-bottom: 30px;
+      gap: 20px;
     }
     .form-group {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     .form-group label {
       display: block;
-      margin-bottom: 12px;
-      font-weight: 800;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
       color: var(--secondary);
     }
     input, select, textarea {
       width: 100%;
-      padding: 20px;
+      padding: 18px 24px;
       background: #F8FAF9;
-      border: 1px solid transparent;
+      border: 2px solid transparent;
+      border-radius: 12px;
       font-family: inherit;
       color: var(--text-main);
       font-size: 1rem;
@@ -147,24 +157,27 @@ import { Component } from '@angular/core';
       outline: none;
       background: white;
       border-color: var(--accent);
-      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+      box-shadow: 0 5px 15px rgba(255, 118, 117, 0.1);
     }
     .w-full {
       width: 100%;
+      justify-content: center;
     }
     @media (max-width: 1024px) {
       .contact-grid {
         grid-template-columns: 1fr;
-        gap: 80px;
+        gap: 60px;
       }
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+      h2 {
+        font-size: 2.5rem;
       }
     }
     @media (max-width: 768px) {
-      .contact-form-wrapper {
-        padding: 40px 20px;
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .contact-form {
+        padding: 30px 20px;
       }
     }
   `]
@@ -175,3 +188,4 @@ export class ContactSectionComponent {
     alert('Thank you for your interest. Our boutique desk will contact you shortly.');
   }
 }
+

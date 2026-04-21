@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <div class="container footer-grid">
         <div class="footer-brand stagger-item">
           <div class="logo">
-            <img src="/assets/logo.png" alt="A1 Property" height="50">
+            <span class="logo-text">A1<span class="text-accent">Elite</span></span>
           </div>
           <p>The definitive boutique agency for Mumbai's extraordinary real estate assets. Defining luxury across the city since 1999.</p>
         </div>
@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
           <div class="footer-col">
             <h6>Contact</h6>
             <ul>
-              <li><a href="mailto:concierge&#64;a1property.in">The Elite Desk</a></li>
+              <li><a href="mailto:a1propertyconsultant&#64;gmail.com">The Elite Desk</a></li>
               <li><a href="#contact">Private Inquiry</a></li>
               <li><a href="tel:+910000000000">+91 90000 00000</a></li>
             </ul>
@@ -44,25 +44,30 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     .footer {
-      background: #064E3B; /* Deep Emerald Footer */
+      background: var(--secondary);
       color: white;
-      padding-top: 120px;
+      padding-top: 100px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
     .footer-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
       gap: 100px;
-      margin-bottom: 100px;
+      margin-bottom: 80px;
     }
-    .logo img {
-      margin-bottom: 30px;
-      filter: brightness(0) invert(1); /* Logo to white on emerald bg */
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -1px;
+      margin-bottom: 25px;
+      display: block;
     }
     .footer-brand p {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.6);
       max-width: 400px;
-      line-height: 1.8;
-      font-size: 1.1rem;
+      line-height: 1.7;
+      font-size: 1.05rem;
     }
     .footer-sections {
       display: grid;
@@ -72,28 +77,29 @@ import { Component } from '@angular/core';
     h6 {
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
       font-weight: 800;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     .footer-col ul li {
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
     .footer-col a {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
       font-size: 0.95rem;
+      transition: var(--transition);
     }
     .footer-col a:hover {
       color: var(--accent);
-      padding-left: 8px;
+      padding-left: 5px;
     }
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 50px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 40px 0;
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.4);
     }
     .flex-between {
       display: flex;
@@ -107,17 +113,21 @@ import { Component } from '@angular/core';
     .legal-links a:hover {
       color: white;
     }
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 60px;
       }
+      .footer-sections {
+        grid-template-columns: 1fr 1fr;
+      }
       .flex-between {
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
         text-align: center;
       }
     }
   `]
 })
 export class FooterComponent {}
+

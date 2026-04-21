@@ -4,109 +4,108 @@ import { Component } from '@angular/core';
   selector: 'app-services',
   standalone: true,
   template: `
-    <section id="services" class="section">
+    <section id="services" class="section services-section">
       <div class="container">
-        <div class="section-header stagger-item">
-          <h4 class="text-gold">Exclusive Services</h4>
-          <h2 class="text-emerald">Tailored Real Estate Solutions</h2>
-          <p>We provide a comprehensive suite of services for the acquisition and disposition of Mumbai's most prestigious properties.</p>
-        </div>
-        <div class="services-grid">
-          @for (service of services; track service.title) {
-            <div class="elite-card stagger-item">
-              <div class="elite-card-img">
-                <img [src]="service.image" [alt]="service.title">
-              </div>
-              <div class="elite-card-body">
-                <h4 class="text-gold">{{ service.category }}</h4>
-                <h3>{{ service.title }}</h3>
-                <p>{{ service.description }}</p>
-                <a href="#contact" class="elite-link">Discover More &rarr;</a>
-              </div>
+        <div class="split-layout">
+          <div class="content-left stagger-item">
+            <h2 class="text-navy">Our services for <br> <span class="text-accent">everything related</span> to your home</h2>
+            <p>Bespoke property consultancy for the most discerning global clients. Experience the pinnacle of Mumbai's luxury landscape.</p>
+            <div class="action">
+               <a href="#contact" class="btn-primary">View All Services</a>
             </div>
-          }
+          </div>
+          
+          <div class="content-right stagger-item">
+            @for (service of services; track service.title) {
+              <div class="service-item">
+                <div class="icon-circle">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                   </svg>
+                </div>
+                <div class="item-text">
+                  <h3>{{ service.title }}</h3>
+                  <p>{{ propertyLongDescription }}</p>
+                </div>
+              </div>
+            }
+          </div>
         </div>
       </div>
     </section>
   `,
   styles: [`
-    .section-header {
-      margin-bottom: 80px;
-      max-width: 800px;
+    .services-section {
+      background: var(--white);
     }
-    .section-header h2 {
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
-      margin-bottom: 20px;
-      font-weight: 800;
-      letter-spacing: -1px;
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
     }
-    .section-header p {
-      font-size: 1.25rem;
+    h2 {
+      font-size: 3.2rem;
+      margin-bottom: 25px;
+    }
+    p {
       color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
       line-height: 1.6;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .content-right {
+      display: flex;
+      flex-direction: column;
       gap: 40px;
     }
-    h3 {
-      font-size: 1.8rem;
-      margin: 10px 0 20px;
-      font-weight: 700;
+    .service-item {
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
     }
-    .elite-card-body p {
-      color: var(--text-muted);
-      margin-bottom: 30px;
-      font-size: 1rem;
-      line-height: 1.6;
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 10px 20px rgba(255, 118, 117, 0.2);
     }
-    .elite-link {
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
+    .item-text h3 {
+      font-size: 1.4rem;
       color: var(--secondary);
-      transition: var(--transition);
+      margin-bottom: 8px;
     }
-    .elite-link:hover {
-      color: var(--accent);
-      padding-left: 10px;
+    .item-text p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
     }
-    @media (max-width: 1100px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 768px) {
-      .services-grid {
+    @media (max-width: 991px) {
+      .split-layout {
         grid-template-columns: 1fr;
+        gap: 60px;
       }
-      .section-header h2 {
+      h2 {
         font-size: 2.5rem;
       }
     }
   `]
 })
 export class ServicesSectionComponent {
+  propertyLongDescription = 'Our expert agents provide personalized consultation to ensure every detail matches your elite lifestyle.';
   services = [
     {
-      title: 'Ultra-Luxury Residences',
-      category: 'Residential',
-      description: 'Acquire iconic sea-facing penthouses and architectural masterpieces in Mumbai’s most elite zip codes.',
-      image: '/assets/interior-1.png'
+      title: 'Premium Property Search',
+      description: 'Acquire iconic sea-facing penthouses and architectural masterpieces.'
     },
     {
-      title: 'Premium Estates & Villas',
-      category: 'Legacy Estates',
-      description: 'Bespoke consultancy for expansive suburban estates and historically significant bungalows.',
-      image: '/assets/villa-1.png'
-    },
-    {
-      title: 'Corporate Portfolio Management',
-      category: 'Commercial',
-      description: 'Strategic advisory for the city’s most prestigious commercial spaces and headquarters.',
-      image: '/assets/services.png'
+      title: 'Expert Valuation',
+      description: 'Bespoke consultancy for expansive suburban estates and legacy homes.'
     }
   ];
 }
+
