@@ -5,20 +5,16 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <section id="hero" class="hero">
-      <div class="hero-bg-gradient"></div>
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
       <div class="container hero-container">
         <div class="hero-content">
           <h4 class="stagger-item text-accent">Exclusive Property Registry</h4>
-          <h1 class="stagger-item">Find Your <br> Dream Home</h1>
-          <p class="stagger-item">Bespoke property consultancy for the most discerning global clients. Experience the pinnacle of Mumbai's luxury landscape.</p>
+          <h1 class="stagger-item text-navy">Find Your <br> Dream Home</h1>
+          <p class="stagger-item text-navy">Bespoke property consultancy for the most discerning global clients. Experience the pinnacle of Mumbai's luxury landscape.</p>
           <div class="hero-actions stagger-item">
             <a href="#gallery" class="btn-primary">Explore Now</a>
-            <a href="#contact" class="btn-outline-white">Watch Video</a>
-          </div>
-        </div>
-        <div class="hero-image stagger-item">
-          <div class="image-card">
-            <img src="/assets/hero.png" alt="Luxury Architecture">
+            <a href="#contact" class="btn-outline">Watch Video</a>
           </div>
         </div>
       </div>
@@ -51,105 +47,84 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     .hero {
-      min-height: 100vh;
-      width: 100%;
       position: relative;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 0 160px;
-      overflow: hidden;
-      background: #0F172A;
+      padding: 140px 0 180px;
+      z-index: 20; /* Ensure search bar stays on top of stats */
     }
-    .hero-bg-gradient {
+    .hero-bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 0% 0%, rgba(19, 78, 94, 0.4) 0%, transparent 50%),
-                  radial-gradient(circle at 100% 100%, rgba(255, 118, 117, 0.1) 0%, transparent 50%);
-      z-index: 0;
+      background: url('/assets/hero.png') no-repeat center center/cover;
+      z-index: -2;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(240, 249, 255, 0.98) 0%, rgba(240, 249, 255, 0.6) 100%);
+      z-index: -1;
     }
     .hero-container {
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 60px;
     }
     .hero-content {
-      max-width: 650px;
+      max-width: 850px;
     }
     h4 {
       text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 0.85rem;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
       margin-bottom: 20px;
+      font-weight: 800;
     }
     h1 {
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      color: white;
+      font-size: clamp(3rem, 10vw, 6.5rem);
       margin-bottom: 30px;
+      line-height: 0.95;
+      letter-spacing: -2px;
     }
     p {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1.2rem;
-      margin-bottom: 45px;
-      line-height: 1.5;
+      color: rgba(15, 23, 42, 0.8);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      margin-bottom: 40px;
+      line-height: 1.6;
+      max-width: 650px;
     }
     .hero-actions {
       display: flex;
-      gap: 25px;
-    }
-    .btn-outline-white {
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-weight: 700;
-    }
-    .btn-outline-white:hover {
-      background: white;
-      color: var(--secondary);
-    }
-    .hero-image {
-      position: relative;
-    }
-    .image-card {
-      width: 100%;
-      aspect-ratio: 1;
-      background: var(--white);
-      border-radius: 40px;
-      overflow: hidden;
-      box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5);
-      transform: rotate(2deg);
-    }
-    .image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: rotate(-2deg) scale(1.15);
+      gap: 20px;
+      flex-wrap: wrap;
     }
     
     /* Search Bar Wrapper */
     .search-wrapper {
       position: absolute;
-      bottom: -40px;
+      bottom: 0;
       left: 0;
       width: 100%;
       z-index: 10;
+      transform: translateY(50%); /* Halfway overlap */
     }
     .search-container {
       background: white;
-      padding: 25px 50px;
+      padding: 20px 50px;
       border-radius: 100px;
-      box-shadow: 0 40px 80px -15px rgba(0,0,0,0.2);
+      box-shadow: 0 40px 80px -15px rgba(15, 23, 42, 0.15);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 30px;
+      border: 1px solid rgba(15, 23, 42, 0.05);
     }
     .search-field {
       display: flex;
@@ -157,17 +132,17 @@ import { Component } from '@angular/core';
       flex: 1;
     }
     .search-field .label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 4px;
     }
     .search-field .value {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--secondary);
-      font-weight: 600;
+      font-weight: 700;
     }
     .divider {
       width: 1px;
@@ -175,8 +150,8 @@ import { Component } from '@angular/core';
       background: rgba(0,0,0,0.1);
     }
     .search-btn {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       background: var(--secondary);
       color: white;
       border-radius: 50%;
@@ -186,17 +161,17 @@ import { Component } from '@angular/core';
       border: none;
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
     }
     .search-btn:hover {
       background: var(--accent);
       transform: scale(1.05);
     }
 
-    @media (max-width: 1100px) {
-      .hero-container {
-        grid-template-columns: 1fr;
+    @media (max-width: 991px) {
+      .hero {
+        padding: 120px 0 100px;
         text-align: center;
+        min-height: auto;
       }
       .hero-content {
         margin: 0 auto;
@@ -204,29 +179,30 @@ import { Component } from '@angular/core';
       .hero-actions {
         justify-content: center;
       }
-      .hero-image {
-        display: none;
+      .search-wrapper {
+        position: relative;
+        bottom: 0;
+        transform: translateY(0);
+        margin-top: 60px;
       }
       .search-container {
         padding: 30px;
         flex-direction: column;
         border-radius: 30px;
+        gap: 20px;
       }
       .divider {
         width: 100%;
         height: 1px;
       }
-      .search-field {
-        text-align: center;
-      }
-      .search-wrapper {
-        bottom: -150px;
-      }
-      .hero {
-        padding-bottom: 200px;
+      .search-btn {
+        width: 100%;
+        border-radius: 50px;
       }
     }
   `]
 })
 export class HeroComponent {}
+
+
 

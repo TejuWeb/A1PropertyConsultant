@@ -19,14 +19,12 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     .stats-bar-section {
-      padding: 60px 0;
+      padding: 120px 0 80px; /* Increased top padding to accommodate search bar */
       background: var(--secondary);
-      margin-top: -60px; /* Slight overlap for modern look */
       position: relative;
       z-index: 5;
       border-radius: var(--radius-lg);
-      margin-left: 5%;
-      margin-right: 5%;
+      margin: 0 5%;
     }
     .stats-container {
       display: flex;
@@ -38,25 +36,30 @@ import { Component } from '@angular/core';
       text-align: center;
     }
     .stat-value {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 800;
       margin-bottom: 5px;
       letter-spacing: -1px;
     }
     .stat-label {
       color: rgba(255, 255, 255, 0.6);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 700;
     }
     @media (max-width: 991px) {
+      .stats-bar-section {
+        margin: 40px 20px 0;
+        padding: 50px 20px;
+      }
       .stats-container {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 40px;
       }
       .stat-item {
-        flex: 1 1 200px;
+        flex: 1 1 150px;
       }
     }
   `]
